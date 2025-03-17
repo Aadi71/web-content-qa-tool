@@ -12,13 +12,9 @@ class WebContentService {
   private urlContents: WebContent[] = [];
   private baseUrl = import.meta.env.VITE_BACKEND_API_URL;
 
-  
-  
-  
   // Real API integration to fetch URL content
   async fetchUrlContents(urls: string[]): Promise<WebContent[]> {
     console.log(`Fetching content for URLs: ${urls}`);
-    console.log(this.baseUrl, 'baseUrl');
 
     try {
       const response = await fetch(`${this.baseUrl}/ingest`, {
