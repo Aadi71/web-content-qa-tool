@@ -26,12 +26,12 @@ Watch the demo on YouTube to see the Web Content Q&A Tool in action:
 ## **Tech Stack**
 
 ### **Frontend**
-- **Framework**: React.js (with Vite)
+- **Framework**: React.js (with Vite - in TypeScript)
 - **Styling**: Tailwind CSS
 - **Hosting**: Vercel
 
 ### **Backend**
-- **Framework**: NestJS
+- **Framework**: NestJS (TypeScript)
 - **Web Scraping**: `axios` + `cheerio`
 - **Question Answering**: Gemini API
 - **Hosting**: Render
