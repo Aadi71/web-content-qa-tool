@@ -196,6 +196,7 @@ const Index = () => {
       <footer className="w-full bg-white border-t py-4 px-6 text-center text-gray-500 text-sm">
         <div className="max-w-5xl mx-auto">
           <p>Web Content Q&A Tool - Ask questions about web content</p>
+          <p className="text-xs">Built with ❤️ </p>
         </div>
       </footer>
     </div>
