@@ -10,7 +10,7 @@ async function bootstrap() {
   app.use(urlencoded({ extended: true, limit: '50mb' }));
 
   app.enableCors(); // Enable CORS
-  await app.listen(3001);
+  await app.listen(3000);
 }
 
 bootstrap();
