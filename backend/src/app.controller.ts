@@ -7,14 +7,19 @@ export class AppController {
   constructor(
     private readonly scrapingService: ScrapingService,
     private readonly qaService: QaService,
-  ) {}
+  ) { }
 
   @Post('ingest')
   async ingestContent(@Body('urls') urls: string[]) {
+    // Scrape content for each URL and return an array of objects
     const contents = await Promise.all(
-      urls.map((url) => this.scrapingService.scrapeContent(url)),
+      urls.map(async (url) => {
+        const content = await this.scrapingService.scrapeContent(url);
+        return { url, content }; // Return an object with URL and content
+      }),
     );
-    return { contents };
+
+    return { contents }; // Return the array of objects
   }
 
   @Post('ask')
