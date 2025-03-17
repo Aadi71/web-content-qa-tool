@@ -5,6 +5,14 @@ A web-based tool that allows users to input one or more URLs, ingest their conte
 
 ---
 
+## **Demo Video**
+
+Watch the demo on YouTube to see the Web Content Q&A Tool in action:
+
+[![Web Content Q&A Tool Demo](https://img.youtube.com/vi/u-KX2kjHyGk/0.jpg)](https://youtu.be/u-KX2kjHyGk)
+
+---
+
 ## **Features**
 
 - **URL Ingestion**: Input one or more URLs to scrape and ingest their content.
