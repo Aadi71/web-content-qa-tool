@@ -9,9 +9,10 @@ A web-based tool that allows users to input one or more URLs, ingest their conte
 
 Watch the demo on YouTube to see the Web Content Q&A Tool in action:
 
-[![Web Content Q&A Tool Demo](https://img.youtube.com/vi/u-KX2kjHyGk/0.jpg)](https://youtu.be/u-KX2kjHyGk)
+<a href="https://youtu.be/u-KX2kjHyGk" target="_blank">
+  <img src="https://img.youtube.com/vi/u-KX2kjHyGk/0.jpg" alt="Web Content Q&A Tool Demo">
+</a>
 
----
 
 ## **Features**
 
