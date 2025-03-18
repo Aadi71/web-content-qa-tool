@@ -61,7 +61,7 @@ const UrlInput: React.FC<UrlInputProps> = ({ urls, setUrls, onSubmit, isLoading 
       <div className="flex items-center space-x-2">
         <Input
           type="text"
-          placeholder="Enter a website URL (e.g., https://example.com)"
+          placeholder="Enter a website URL (e.g., https://en.wikipedia.org/wiki/Kraken)"
           value={currentUrl}
           onChange={(e) => setCurrentUrl(e.target.value)}
           onKeyDown={handleKeyDown}

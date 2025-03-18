@@ -11,15 +11,19 @@ export class AppController {
 
   @Post('ingest')
   async ingestContent(@Body('urls') urls: string[]) {
-    // Scrape content for each URL and return an array of objects
-    const contents = await Promise.all(
-      urls.map(async (url) => {
-        const content = await this.scrapingService.scrapeContent(url);
-        return { url, content }; // Return an object with URL and content
-      }),
-    );
+    try {
+      // Scrape content for each URL and return an array of objects
+      const contents = await Promise.all(
+        urls.map(async (url) => {
+          const content = await this.scrapingService.scrapeContent(url);
+          return content; // Return an object with URL and content
+        }),
+      );
 
-    return { contents }; // Return the array of objects
+      return { contents }; // Return the array of objects
+    } catch (error) {
+      return { error: error.message };
+    }
   }
 
   @Post('ask')

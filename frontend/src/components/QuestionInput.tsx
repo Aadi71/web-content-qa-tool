@@ -1,8 +1,7 @@
-
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Send } from 'lucide-react';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Send } from "lucide-react";
 
 interface QuestionInputProps {
   onAskQuestion: (question: string) => void;
@@ -10,23 +9,23 @@ interface QuestionInputProps {
   isLoading: boolean;
 }
 
-const QuestionInput: React.FC<QuestionInputProps> = ({ 
-  onAskQuestion, 
-  isDisabled, 
-  isLoading 
+const QuestionInput: React.FC<QuestionInputProps> = ({
+  onAskQuestion,
+  isDisabled,
+  isLoading,
 }) => {
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (question.trim() && !isDisabled) {
       onAskQuestion(question);
-      setQuestion('');
+      setQuestion("");
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
     }
@@ -35,7 +34,11 @@ const QuestionInput: React.FC<QuestionInputProps> = ({
   return (
     <form onSubmit={handleSubmit} className="relative">
       <Textarea
-        placeholder={isDisabled ? "Process URLs to ask questions..." : "Ask a question about the web content..."}
+        placeholder={
+          isDisabled
+            ? "Process URLs to ask questions..."
+            : "Ask a question about the web content...(Ex: Karken belongs to which species?)"
+        }
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         onKeyDown={handleKeyDown}
