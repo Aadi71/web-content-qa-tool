@@ -87,9 +87,6 @@ class WebContentService {
         .join('\n\n');
 
       // Call the ask API
-
-      console.log(context);
-
       const response = await fetch(`${this.baseUrl}/ask`, {
         method: 'POST',
         headers: {
