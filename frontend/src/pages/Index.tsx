@@ -109,6 +109,26 @@ const Index = () => {
     }));
   };
 
+  useEffect(() => {
+    async function startServer() {
+      try {
+        const res = await webContentService.startServer();
+        console.log(res);
+      } catch (error) {
+        console.error("Error starting server:", error);
+        toast({
+          title: "Error starting server",
+          description:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+          variant: "destructive",
+        });
+      }
+    }
+    startServer();
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gradient-to-b from-gray-50 to-gray-100">
       <header className="w-full bg-white shadow-sm py-4 px-6">

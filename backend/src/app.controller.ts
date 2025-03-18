@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { ScrapingService } from './scraping/scraping.service';
 import { QaService } from './qa/qa.service';
 
@@ -26,5 +26,10 @@ export class AppController {
   async askQuestion(@Body('question') question: string, @Body('context') context: string) {
     const answer = await this.qaService.answerQuestion(question, context);
     return { answer };
+  }
+
+  @Get('start-api')
+  startApi() {
+    return 'API is running!';
   }
 }

@@ -12,6 +12,19 @@ class WebContentService {
   private urlContents: WebContent[] = [];
   private baseUrl = import.meta.env.VITE_BACKEND_API_URL;
 
+  async startServer(): Promise<string> {
+    try {
+      const response = await fetch(`${this.baseUrl}/start-api`);
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status} ${response.statusText}`);
+      }
+      return response.text();
+    } catch (error) {
+      console.error('Error starting API:', error);
+      throw error;
+    }
+  }
+
   // Real API integration to fetch URL content
   async fetchUrlContents(urls: string[]): Promise<WebContent[]> {
     console.log(`Fetching content for URLs: ${urls}`);
@@ -24,14 +37,14 @@ class WebContentService {
         },
         body: JSON.stringify({ urls }),
       });
-      
+
       if (!response.ok) {
         throw new Error(`API error: ${response.status} ${response.statusText}`);
       }
-      
+
       const data = await response.json();
       const contents = data?.contents || [];
-      
+
       // Assuming the API returns an array of objects with url and content fields
       // If the API response format is different, adjust the mapping accordingly
       return contents.map((item: any) => ({
@@ -43,7 +56,7 @@ class WebContentService {
       throw error;
     }
   }
-  
+
   async processUrls(urls: string[]): Promise<WebContent[]> {
     try {
       // Use the real API to fetch content
@@ -59,24 +72,24 @@ class WebContentService {
       throw error;
     }
   }
-  
+
   async getAnswerForQuestion(question: string): Promise<QAResponse> {
     console.log(`Answering question: ${question}`);
-    
+
     if (this.urlContents.length === 0) {
       throw new Error("No content has been processed yet. Please add and process URLs first.");
     }
-    
+
     try {
       // Prepare context from all URL contents
       const context = this.urlContents
         .map(item => `URL: ${item.url}\nContent: ${item.content}`)
         .join('\n\n');
-      
+
       // Call the ask API
 
       console.log(context);
-      
+
       const response = await fetch(`${this.baseUrl}/ask`, {
         method: 'POST',
         headers: {
@@ -87,13 +100,13 @@ class WebContentService {
           context,
         }),
       });
-      
+
       if (!response.ok) {
         throw new Error(`API error: ${response.status} ${response.statusText}`);
       }
-      
+
       const data = await response.json();
-      
+
       // Adjust this mapping according to the actual response structure
       return {
         answer: data.answer || "No answer found.",
@@ -104,7 +117,7 @@ class WebContentService {
       throw error;
     }
   }
-  
+
   getProcessedContents(): WebContent[] {
     return this.urlContents;
   }
