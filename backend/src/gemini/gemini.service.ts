@@ -31,4 +31,19 @@ Answer:`;
       throw new Error(`Failed to get answer from Gemini: ${error.message}`);
     }
   }
+
+  async getRelevantContent(context: string): Promise<string> {
+    try {
+      const prompt = `I will be giving you the scraped content from website, however, it contains redundant information or html tags as well. Please summarize the content for me, so that I can send relevant content for question and answers based on that content as a prompt to AI model."
+
+Context: ${context}`;
+
+      // Generate content using the Gemini model
+      const result = await this.model.generateContent(prompt);
+      const response = await result.response;
+      return response.text();
+    } catch (error) {
+      throw new Error(`Failed to get answer from Gemini: ${error.message}`);
+    }
+  }
 }

@@ -197,6 +197,11 @@ const Index = () => {
                 className="h-[calc(100vh-300px)] overflow-y-auto p-4" // Fixed height and scroll
               >
                 <div className="space-y-4">
+                  <span className="text-xs">
+                    *I am summarising the relevant information only that is
+                    needed for prompt engineering, removing redundant scraped
+                    data
+                  </span>
                   {processedContents.map((content) => (
                     <UrlContent
                       key={content.url}

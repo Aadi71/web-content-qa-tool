@@ -9,6 +9,14 @@ export class AppController {
     private readonly qaService: QaService,
   ) { }
 
+  @Get('/')
+  home() {
+    return {
+      message: 'Welcome to the backend of Web Content QnA.',
+      frontendUrl: 'https://web-content-qa-tool.vercel.app'
+    };
+  }
+
   @Post('ingest')
   async ingestContent(@Body('urls') urls: string[]) {
     try {
