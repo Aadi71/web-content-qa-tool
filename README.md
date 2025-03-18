@@ -62,7 +62,7 @@ Follow these steps to set up and run the project on your local machine.
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/web-content-qa-tool.git
+git clone https://github.com/Aadi71/web-content-qa-tool.git
 cd web-content-qa-tool
 ```
 
